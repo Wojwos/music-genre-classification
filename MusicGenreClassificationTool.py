@@ -52,22 +52,6 @@ def saveSpectrogramsAsPNG():
             plt.axis('off');
             plt.savefig(f'img_data/{class_dir}/{file[:-4]}.png')
             plt.clf()
-            
-def saveSpectrogramsAsNPZ():
-    if not os.path.exists(f'spectrograms'):
-            os.mkdir(f'img_data')
-    np.seterr(divide = 'ignore')
-    cmap = plt.get_cmap('inferno')
-    for class_dir in os.listdir('Samples'):
-        if not os.path.exists(f'img_data/{class_dir}'):
-            os.mkdir(f'img_data/{class_dir}')
-        for count, file in enumerate(os.listdir('Samples/'+class_dir), 1):
-            songname = f'Samples/{class_dir}/{file}'
-            y, sr = librosa.load(songname, mono=True, duration=5)
-            plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB');
-            plt.axis('off');
-            plt.savefig(f'img_data/{class_dir}/{file[:-4]}.png')
-            plt.clf()
 
 def create_spectogram(track_id):
     filename = track_id
