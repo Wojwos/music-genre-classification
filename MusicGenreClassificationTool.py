@@ -5,12 +5,11 @@ import io
 import librosa
 import librosa.display
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder, StandardScaler, LabelBinarizer   
 from sklearn.metrics import confusion_matrix
 import itertools
-import pandas as pd
-import numpy as np
 
 def extractFeaturesToCSV():
     header = 'chroma_stft rmse spectral_centroid spectral_bandwidth rolloff zero_crossing_rate'
@@ -42,8 +41,8 @@ def extractFeaturesToCSV():
                 writer = csv.writer(file)
                 writer.writerow(to_append.split())
 
-def loadFeatures():
-    data = pd.read_csv('features.csv')
+def loadFeatures(indir):
+    data = pd.read_csv(indir)
     genre_list = data.iloc[:, -1]
     encoder = LabelEncoder()
     labels = encoder.fit_transform(genre_list)
@@ -51,7 +50,7 @@ def loadFeatures():
     samples = scaler.fit_transform(np.array(data.iloc[:, :-1], dtype = float))
     return samples, labels                
 
-def saveSpectrogramsAsPNG():
+def saveSpectrogramsToPNG():
     if not os.path.exists(f'img_data'):
             os.mkdir(f'img_data')
     np.seterr(divide = 'ignore')
@@ -79,6 +78,15 @@ def loadImages(indir, image_size):
             labels.append(the_class)
     samples = np.array(samples)
     labels = np.array(labels)
+    print('loaded',len(samples),' samples')
+    print('classes',set(labels))
+    
+    # one-hot labels
+    lb = LabelBinarizer()
+    labels = lb.fit_transform(labels)
+    print("Labels shape",labels.shape)
+    labels = labels.astype(float)
+    
     return samples,labels
 
 def makeSpectrogram(track_id):
@@ -96,7 +104,7 @@ def plotSpectrogram(track_id):
     plt.colorbar(format='%+2.0f dB')
     plt.show()
 
-def saveSpectrogramsAsNPZ():
+def saveSpectrogramsToNPZ():
     X_spect = np.empty((0, 640, 128))
     count = 0
     genres = []
@@ -121,6 +129,14 @@ def saveSpectrogramsAsNPZ():
     y_arr = lb.fit_transform(y_arr)
     np.savez('data_arr', X_spect, y_arr)
 
+def loadArrays(indir):
+    npzfile = np.load(indir)
+    print(npzfile.files)
+    samples = npzfile['arr_0']
+    labels = npzfile['arr_1']
+    print(samples.shape, labels.shape)
+    return samples, labels
+    
 def makeDictionary():
     dict_genres = {}
 
