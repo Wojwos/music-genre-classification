@@ -167,14 +167,9 @@ def showSummaryStats(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
 
-def plotConfusionMatrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
+def plotConfusionMatrix(trueLabel, predictedLabel, classes,normalize=False,title='Confusion matrix',cmap=plt.cm.Blues):
+    cm = confusion_matrix(trueLabel, predictedLabel)
+    plt.figure(figsize=(10,10))
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
