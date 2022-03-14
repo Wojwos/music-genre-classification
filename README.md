@@ -50,7 +50,7 @@ Przed rozpoczęciem pracy należy przygotować środowisko, instalując wcześni
 
 Aby móc korzystać z modułu pierwszym krokiem jest odpowiednie przygotowanie danych. Powinny być to pliki muzyczne zapisane w formatach takich, jak np. mp3 lub wav. Wszystkie pliki powinny być posortowane w folderach według ich gatunku. Każdy folder powinien być nazwany gatunkiem utworów znajdujących się wewnątrz. Wszystkie foldery z muzyką powinny zostać umieszczone w katalogu “Samples”. Tak przygotowane dane są gotowe do użycia.
 
-```bash
+```
 ├── Samples/
    ├── blues
    ├── classical
