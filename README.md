@@ -87,9 +87,9 @@ Następnym krokiem jest przygotowanie danych. Sekcja “Data preparation” zawi
 - **Wczytywanie danych**
 
 Przed wczytaniem danych ważne jest wybranie jednego z 3 podejść. W tym celu należy przejść do komórek znajdujących się w odpowiedniej sekcji. Istnieją 3 sekcje nazwane kolejno:
-   - spectrograms (image),
-   - spectrograms (array),
-   - features.
+- spectrograms (image),
+- spectrograms (array),
+- features.
 
 Po przejściu do odpowiednich komórek należy uruchomić kod znajdujący się pod oznaczeniem “Load the data:”.
 
