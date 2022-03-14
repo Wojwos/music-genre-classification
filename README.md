@@ -67,6 +67,7 @@ Po przygotowaniu środowiska i danych, należy uruchomić JupyterLab i otworzyć
 - spectrograms (image),
 - spectrograms (array),
 - features.
+
 W każdej sekcji znajdują się trzy podsekcje dotyczące:
 - wczytywania danych,
 - budowania i trenowania modeli,
