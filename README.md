@@ -72,6 +72,7 @@ W każdej sekcji znajdują się trzy podsekcje dotyczące:
 - wczytywania danych,
 - budowania i trenowania modeli,
 - testowania modeli.
+
 Nie ma potrzeby nanoszenia zmian przy wczytywaniu danych, natomiast w przypadku podsekcji dotyczącej tworzenia modeli jest ona tylko i wyłącznie wskazówką gdzie oraz w jaki sposób można stworzyć model. Można go zastąpić dowolną architekturą dopasowaną do kształtu danych, a następnie przetestować model w taki sam sposób jak w gotowych rozwiązaniach.
 
 **Obsługa notatnika Jupyter**
